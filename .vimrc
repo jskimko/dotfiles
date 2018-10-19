@@ -1,19 +1,25 @@
 execute pathogen#infect()
 filetype plugin indent on
 syntax on
-colorscheme eldar
+colorscheme desert
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set hlsearch
 set incsearch
 set wildmenu
-set wildmode=longest:full
-set undodir=$HOME/.vim/undodir
+set wildmode=longest:full,full
+set undodir=$HOME/.vim/undo
 set undofile
 set showcmd
 set clipboard=unnamedplus
 set cc=80
+set number
+set relativenumber
+
+" white and grey line numbers
+highlight LineNr ctermfg=DarkGrey
+highlight CursorLineNr ctermfg=White
 
 " split
 nnoremap <C-J> <C-W><C-J>
@@ -27,22 +33,40 @@ set splitright
 map <F2> If<Esc>wastderr, <Esc>
 map <F3> 0wxwldwdw
 
-" sudo save
-cmap w!! w !sudo tee > /dev/null %
+" map tabs
+let mapleader = "\<Space>" 
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
 
-" latex spellcheck
-autocmd FileType tex setlocal spell spelllang=en_us
+" run as python code
+noremap <leader>p :w !python<CR>
 
-""" Plugins
-" better-whitespace
-let g:strip_whitespace_on_save=1
+" open .cc/.hh
+map <leader>c :vs <C-r>=expand('%:p')<CR><BS><BS>cc<CR>
+map <leader>h :vs <C-r>=expand('%:p')<CR><BS><BS>hh<CR>
 
-" vim-quickscope
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" goto file with vertical split
+nnoremap <C-w>f <C-w>f<C-w>L
 
-" vim-sneak
-let g:sneak#label = 1
+"""""""""""
+" Plugins "
+"""""""""""
+
+" AutoComplPop  ctrlp.vim  tagbar  vim-sneak  vim-surround
+
+" ctrlp
+let g:ctrlp_by_filename = 1
+"let g:ctrlp_regexp = 1
+let g:ctrlp_clear_cache_on_exit = 0
 
 " tagbar
-nmap <F8> :TagbarOpenAutoClose<CR>
+nmap <F8> :TagbarToggle<CR>
 
+" sneak
+let g:sneak#label = 1
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
