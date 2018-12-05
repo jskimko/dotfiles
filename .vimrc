@@ -47,6 +47,10 @@ noremap <leader>p :w !python<CR>
 map <leader>c :vs <C-r>=expand('%:p')<CR><BS><BS>cc<CR>
 map <leader>h :vs <C-r>=expand('%:p')<CR><BS><BS>hh<CR>
 
+" open .log/.log.err
+map <leader>l :vs <C-r>=expand('%:p')<CR><BS><BS><BS><BS><CR>
+map <leader>e :vs <C-r>=expand('%:p')<CR>.err<CR>
+
 " goto file with vertical split
 nnoremap <C-w>f <C-w>f<C-w>L
 
@@ -55,6 +59,9 @@ nnoremap <C-w>f <C-w>f<C-w>L
 """""""""""
 
 " AutoComplPop  ctrlp.vim  tagbar  vim-sneak  vim-surround
+
+" AutoComplPop
+let g:acp_ignorecaseOption = 1
 
 " ctrlp
 let g:ctrlp_by_filename = 1
