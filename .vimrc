@@ -61,7 +61,8 @@ nnoremap <C-w>f <C-w>f<C-w>L
 " AutoComplPop  ctrlp.vim  tagbar  vim-sneak  vim-surround
 
 " AutoComplPop
-let g:acp_ignorecaseOption = 1
+let g:acp_ignorecaseOption = 0
+let g:acp_behaviorPythonOmniLength = -1
 
 " ctrlp
 let g:ctrlp_by_filename = 1
