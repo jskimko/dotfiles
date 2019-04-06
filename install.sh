@@ -25,7 +25,7 @@ if [ "_$user" = _y ]; then
     $HOME/.fzf/install
 
     echo 'if command -v fzf; then
-    export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore --exclude .git"
+    export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore --exclude .git --exclude *.swp"
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     export FZF_ALT_C_COMMAND="fd --type d"
     export FZF_DEFAULT_OPTS="
