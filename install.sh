@@ -18,6 +18,13 @@ if [ "_$user" = _y ]; then
     cat tmux.conf >> $HOME/.tmux.conf
 fi
 
+echo -ne '\e[96;1m> Install fzf? (y/n) \e[39;0m'
+read user
+if [ "_$user" = _y ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+    $HOME/.fzf/install
+fi
+
 echo -ne '\e[96;1m> Install vim plugins? (y/n) \e[39;0m'
 read user
 if [ "_$user" = _y ]; then
