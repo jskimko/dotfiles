@@ -24,18 +24,16 @@ if [ "_$user" = _y ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
     $HOME/.fzf/install
 
-    echo "
-if command -v fzf; then
-    export FZF_DEFAULT_COMMAND='fd --hidden --no-ignore --exclude ".git"'
+    echo 'if command -v fzf; then
+    export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore --exclude .git"
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     export FZF_ALT_C_COMMAND="fd --type d"
-
-    export FZF_DEFAULT_OPTS='
+    export FZF_DEFAULT_OPTS="
         --multi --no-reverse --inline-info
-        --bind ctrl-f:page-down,ctrl-b:page-up
-        '
-
+        --bind ctrl-f:page-down,ctrl-b:page-up"
     export FZF_TMUX=1
+
+    bind "$(bind -s | grep '"'"'^"\\C-r"'"'"' | grep -v '"'"'\\C-m'"'"' | sed '"'"'s/"$/\\C-m"/'"')\"
 fi" >> $HOME/.bashrc
 fi
 
@@ -66,7 +64,7 @@ echo -ne '\e[96;1m> Install rust things? (y/n) \e[39;0m'
 read user
 if [ "_$user" = _y ]; then 
     # rust
-    if !command -v cargo; then
+    if ! command -v cargo >/dev/null; then
         if [ -f $HOME/.cargo/env ]; then
             . $Home/.cargo/env
         else 
@@ -75,21 +73,25 @@ if [ "_$user" = _y ]; then
     fi
 
     # utils
-    if command -v cargo; then 
+    if command -v cargo >/dev/null; then
         # ripgrep
-        git clone https://github.com/BurntSushi/ripgrep
-        cd ripgrep
-        cargo build --release
-        cargo install
-        cd $start
-        
+        if ! command -v rg >/dev/null; then 
+            git clone https://github.com/BurntSushi/ripgrep $HOME/ripgrep
+            cd $HOME/ripgrep
+            cargo build --release
+            cargo install --path .
+            cd $start
+            rm -rf $HOME/ripgrep
+        fi
+            
         # fd
-        git clone https://github.com/sharkdp/fd
-        cd fd
-        cargo build --release
-        cargo install
-        cd $start
-    else
-        echo "error: failed to install rust" >&2
+        if ! command -v fd >/dev/null; then 
+            git clone https://github.com/sharkdp/fd $HOME/fd
+            cd $HOME/fd
+            cargo build --release
+            cargo install --path .
+            cd $start
+            rm -rf $HOME/fd
+        fi
     fi
 fi
