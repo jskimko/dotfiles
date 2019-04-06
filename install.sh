@@ -23,6 +23,20 @@ read user
 if [ "_$user" = _y ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
     $HOME/.fzf/install
+
+    echo "
+if command -v fzf; then
+    export FZF_DEFAULT_COMMAND='fd --hidden --no-ignore --exclude ".git"'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND="fd --type d"
+
+    export FZF_DEFAULT_OPTS='
+        --multi --no-reverse --inline-info
+        --bind ctrl-f:page-down,ctrl-b:page-up
+        '
+
+    export FZF_TMUX=1
+fi" >> $HOME/.bashrc
 fi
 
 echo -ne '\e[96;1m> Install vim plugins? (y/n) \e[39;0m'
@@ -52,7 +66,13 @@ echo -ne '\e[96;1m> Install rust things? (y/n) \e[39;0m'
 read user
 if [ "_$user" = _y ]; then 
     # rust
-    curl https://sh.rustup.rs -sSf | sh
+    if !command -v cargo; then
+        if [ -f $HOME/.cargo/env ]; then
+            . $Home/.cargo/env
+        else 
+            curl https://sh.rustup.rs -sSf | sh
+        fi
+    fi
 
     # utils
     if command -v cargo; then 
