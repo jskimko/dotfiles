@@ -33,8 +33,9 @@ if [ "_$user" = _y ]; then
         --bind ctrl-f:page-down,ctrl-b:page-up"
     export FZF_TMUX=1
 
-    bind "$(bind -s | grep '"'"'^"\\C-r"'"'"' | grep -v '"'"'\\C-m'"'"' | sed '"'"'s/"$/\\C-m"/'"')\"
-fi" >> $HOME/.bashrc
+    bind "$(bind -s | grep '"'"'^"\\C-r"'"'"' | grep -v '"'"'\\C-m'"'"' | sed '"'"'s/^"\\C-r/\\C-f"/'"')\""'
+    bind "$(bind -s | grep '"'"'^"\\C-r"'"'"' | grep -v '"'"'\\C-m'"'"' | sed '"'"'s/"$/\\C-m"/'"')\""'
+fi' >> $HOME/.bashrc
 fi
 
 echo -ne '\e[96;1m> Install vim plugins? (y/n) \e[39;0m'
