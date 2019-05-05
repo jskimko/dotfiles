@@ -1,4 +1,6 @@
 execute pathogen#infect()
+set rtp+=~/.fzf
+
 filetype plugin indent on
 syntax on
 colorscheme desert
@@ -16,6 +18,9 @@ set clipboard=unnamedplus
 set cc=80
 set number
 set relativenumber
+
+set laststatus=2
+highlight StatusLine cterm=None ctermbg=DarkGrey ctermfg=White
 
 " white and grey line numbers
 highlight LineNr ctermfg=DarkGrey
@@ -45,13 +50,19 @@ noremap <leader>1 1gt
 noremap <leader>2 2gt
 noremap <leader>3 3gt
 noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
 
 " run as python code
-noremap <leader>p :w !python<CR>
+" noremap <leader>p :w !python<CR>
 
 " open .cc/.hh
-map <leader>c :vs <C-r>=expand('%:p')<CR><BS><BS>cc<CR>
-map <leader>h :vs <C-r>=expand('%:p')<CR><BS><BS>hh<CR>
+set wildcharm=<tab>
+map <leader>c :vs <C-r>=expand('%:p')<CR><BS><BS>c<tab><CR>
+map <leader>h :vs <C-r>=expand('%:p')<CR><BS><BS>h<tab><CR>
 
 " open .log/.log.err
 map <leader>l :vs <C-r>=expand('%:p')<CR><BS><BS><BS><BS><CR>
@@ -64,16 +75,11 @@ nnoremap <C-w>f <C-w>f<C-w>L
 " Plugins "
 """""""""""
 
-" AutoComplPop  ctrlp.vim  tagbar  vim-sneak  vim-surround
+" AutoComplPop  tagbar  vim-sneak  vim-surround fzf.vim fzf-mru.vim
 
 " AutoComplPop
 let g:acp_ignorecaseOption = 0
-let g:acp_behaviorPythonOmniLength = -1
-
-" ctrlp
-let g:ctrlp_by_filename = 1
-"let g:ctrlp_regexp = 1
-let g:ctrlp_clear_cache_on_exit = 0
+"let g:acp_behaviorPythonOmniLength = -1
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -84,3 +90,12 @@ map f <Plug>Sneak_f
 map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
+
+" fzf.vim
+nnoremap <silent> <leader>p :Files<CR>
+nnoremap <silent> <leader>l :Lines<CR>
+nnoremap <silent> <leader>r :Rg<space>
+let g:fzf_layout = { 'down': '~30%' }
+
+" fzf-mru.vim
+nnoremap <silent> <leader>m :FZFMru<CR>
