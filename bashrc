@@ -44,10 +44,5 @@ alias gb="git branch"
 #alias sme="squeue -u kimko1"
 #alias bme="bjobs -u kimko1"
 
-# Batch Scheduler
-#if [ -n "$LSF_ENVDIR" ]; then
-#    export LSB_DEFAULT_USERGROUP="guests"
-#fi
-
 # umask
 umask 0077

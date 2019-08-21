@@ -10,7 +10,7 @@ if [ ! $(basename $start) = dotfiles ]; then
     exit
 fi
 
-echo -ne '\e[96;1m> Install dotfiles? (y/n) \e[39;0m'
+echo -ne '\e[96;1m> Install dotfiles? (y/[n]) \e[39;0m'
 read user
 if [ "_$user" = _y ]; then
     cat vimrc >> $HOME/.vimrc
@@ -18,7 +18,7 @@ if [ "_$user" = _y ]; then
     cat tmux.conf >> $HOME/.tmux.conf
 fi
 
-echo -ne '\e[96;1m> Install fzf? (y/n) \e[39;0m'
+echo -ne '\e[96;1m> Install fzf? (y/[n]) \e[39;0m'
 read user
 if [ "_$user" = _y ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
@@ -38,7 +38,7 @@ if [ "_$user" = _y ]; then
 fi' >> $HOME/.bashrc
 fi
 
-echo -ne '\e[96;1m> Install vim plugins? (y/n) \e[39;0m'
+echo -ne '\e[96;1m> Install vim plugins? (y/[n]) \e[39;0m'
 read user
 if [ "_$user" = _y ]; then
     mkdir -p $HOME/.vim/undo $HOME/.vim/bundle
@@ -61,7 +61,7 @@ if [ "_$user" = _y ]; then
     cd $start
 fi
 
-echo -ne '\e[96;1m> Install rust things? (y/n) \e[39;0m'
+echo -ne '\e[96;1m> Install rust things? (y/[n]) \e[39;0m'
 read user
 if [ "_$user" = _y ]; then 
     # rust
