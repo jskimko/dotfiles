@@ -19,9 +19,8 @@ set cc=80
 set number
 set relativenumber
 
-" statusline
 set laststatus=2
-highlight StatusLine cterm=NONE ctermbg=DarkGrey ctermfg=White
+highlight StatusLine cterm=None ctermbg=DarkGrey ctermfg=White
 
 " white and grey line numbers
 highlight LineNr ctermfg=DarkGrey
@@ -61,8 +60,9 @@ noremap <leader>9 9gt
 " noremap <leader>p :w !python<CR>
 
 " open .cc/.hh
-map <leader>c :vs <C-r>=expand('%:p')<CR><BS><BS>cc<CR>
-map <leader>h :vs <C-r>=expand('%:p')<CR><BS><BS>hh<CR>
+set wildcharm=<tab>
+map <leader>c :vs <C-r>=expand('%:p')<CR><BS><BS>c<tab><CR>
+map <leader>h :vs <C-r>=expand('%:p')<CR><BS><BS>h<tab><CR>
 
 " open .log/.log.err
 map <leader>l :vs <C-r>=expand('%:p')<CR><BS><BS><BS><BS><CR>
@@ -78,16 +78,11 @@ map <leader>n :set number!<CR>:set relativenumber!<CR>
 " Plugins "
 """""""""""
 
-" AutoComplPop  ctrlp.vim  tagbar  vim-sneak  vim-surround
+" AutoComplPop  tagbar  vim-sneak  vim-surround fzf.vim fzf-mru.vim
 
 " AutoComplPop
 let g:acp_ignorecaseOption = 0
-let g:acp_behaviorPythonOmniLength = -1
-
-" ctrlp
-let g:ctrlp_by_filename = 1
-"let g:ctrlp_regexp = 1
-let g:ctrlp_clear_cache_on_exit = 0
+"let g:acp_behaviorPythonOmniLength = -1
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
