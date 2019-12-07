@@ -67,7 +67,7 @@ if [ "_$user" = _y ]; then
     # rust
     if ! command -v cargo >/dev/null; then
         if [ -f $HOME/.cargo/env ]; then
-            . $Home/.cargo/env
+            . $HOME/.cargo/env
         else 
             curl https://sh.rustup.rs -sSf | sh
         fi
