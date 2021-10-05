@@ -22,7 +22,7 @@ echo -ne '\e[96;1m> Install fzf? (y/[n]) \e[39;0m'
 read user
 if [ "_$user" = _y ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-    $HOME/.fzf/install
+    $HOME/.fzf/install --all
 
     echo 'if command -v fzf; then
     export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore --exclude .git --exclude *.swp"
