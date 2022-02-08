@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [ ! $# -gt 1 ] || ! ps -p $1 >/dev/null; then
+  echo "usage: $0 pid cmd" >&2
+  exit 1
+fi
+
+pid=$1
+shift
+
+while ps -p $pid >/dev/null; do
+  sleep 1
+done
+
+eval $@
