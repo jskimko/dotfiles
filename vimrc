@@ -1,6 +1,7 @@
 execute pathogen#infect()
 set rtp+=~/.fzf
 
+let g:python_recommended_style = 0
 filetype plugin indent on
 syntax on
 colorscheme desert
