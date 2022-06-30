@@ -37,6 +37,7 @@ alias ga="git add"
 alias gc="git commit"
 alias gl="git log --oneline -20"
 alias gb="git branch"
+#alias ssh-init='eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_ed25519'
 #alias pdflatex='pdflatex -halt-on-error'
 #alias expac='expac --timefmt="%Y-%m-%d %T" "%l\t%n" | sort'
 #alias mavail="module avail"
