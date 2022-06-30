@@ -55,8 +55,6 @@ if [ "_$user" = _y ]; then
     git clone https://github.com/junegunn/fzf.vim
     git clone https://github.com/pbogut/fzf-mru.vim
     git clone https://github.com/justinmk/vim-sneak
-    git clone https://github.com/tpope/vim-surround
-    git clone https://github.com/majutsushi/tagbar
 
     cd $start
 fi
