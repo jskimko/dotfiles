@@ -14,7 +14,7 @@ function nonzero_return() {
     [ $RETVAL -ne 0 ] && echo "$RETVAL "
 }
 function git_prompt() {
-    git_branch=`git branch 2>/dev/null | grep ^* | awk '{print $2}'`
+    git_branch=`git branch 2>/dev/null | grep ^* | sed 's/\* //' | sed 's/[()]//g'`
     if [ -n "$git_branch" ]; then
         echo " ($git_branch)"
     fi
