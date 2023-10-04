@@ -14,7 +14,7 @@ function nonzero_return() {
     [ $RETVAL -ne 0 ] && echo "$RETVAL "
 }
 function git_prompt() {
-    git_branch=`git branch 2>/dev/null | grep ^* | awk '{print $2}'`
+    git_branch=`git branch 2>/dev/null | grep ^* | sed 's/\* //' | sed 's/[()]//g'`
     if [ -n "$git_branch" ]; then
         echo " ($git_branch)"
     fi
@@ -22,7 +22,8 @@ function git_prompt() {
 
 # Environment variables
 export PATH="$HOME/.local/bin:$PATH"
-export PS1="\[\e[31;1m\]\$(nonzero_return)\[\e[93;1m\][\h:\w\[\$(git_prompt)\]]\\$ \[\e[m\]"
+export LD_LIBRARY_PATH="$HOME/.local/lib:$PATH"
+export PS1="\[\e[31;1m\]\$(nonzero_return)\[\e[93;1m\][\h:\w\$(git_prompt)]\\$ \[\e[m\]"
 export HISTCONTROL=ignoreboth:erasedups
 export LS_COLORS=$LS_COLORS':di=0;35:'
 export EDITOR="vim"
@@ -36,6 +37,7 @@ alias ga="git add"
 alias gc="git commit"
 alias gl="git log --oneline -20"
 alias gb="git branch"
+#alias ssh-init='eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_ed25519'
 #alias pdflatex='pdflatex -halt-on-error'
 #alias expac='expac --timefmt="%Y-%m-%d %T" "%l\t%n" | sort'
 #alias mavail="module avail"

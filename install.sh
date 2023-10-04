@@ -28,10 +28,7 @@ if [ "_$user" = _y ]; then
     export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore --exclude .git --exclude *.swp"
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     export FZF_ALT_C_COMMAND="fd --type d"
-    export FZF_DEFAULT_OPTS="
-        --multi --no-reverse --inline-info
-        --bind ctrl-f:page-down,ctrl-b:page-up"
-    export FZF_TMUX=1
+    export FZF_DEFAULT_OPTS="--multi --no-reverse --inline-info --bind ctrl-f:page-down,ctrl-b:page-up"
 
     bind "$(bind -s | grep '"'"'^"\\C-r"'"'"' | grep -v '"'"'\\C-m'"'"' | sed '"'"'s/^"\\C-r/\\C-f"/'"')\""'
     bind "$(bind -s | grep '"'"'^"\\C-r"'"'"' | grep -v '"'"'\\C-m'"'"' | sed '"'"'s/"$/\\C-m"/'"')\""'
@@ -55,8 +52,6 @@ if [ "_$user" = _y ]; then
     git clone https://github.com/junegunn/fzf.vim
     git clone https://github.com/pbogut/fzf-mru.vim
     git clone https://github.com/justinmk/vim-sneak
-    git clone https://github.com/tpope/vim-surround
-    git clone https://github.com/majutsushi/tagbar
 
     cd $start
 fi
@@ -66,11 +61,10 @@ read user
 if [ "_$user" = _y ]; then 
     # rust
     if ! command -v cargo >/dev/null; then
-        if [ -f $HOME/.cargo/env ]; then
-            . $HOME/.cargo/env
-        else 
+        if [ ! -f $HOME/.cargo/env ]; then
             curl https://sh.rustup.rs -sSf | sh
         fi
+        . $HOME/.cargo/env
     fi
 
     # utils
