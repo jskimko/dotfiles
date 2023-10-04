@@ -28,10 +28,7 @@ if [ "_$user" = _y ]; then
     export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore --exclude .git --exclude *.swp"
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     export FZF_ALT_C_COMMAND="fd --type d"
-    export FZF_DEFAULT_OPTS="
-        --multi --no-reverse --inline-info
-        --bind ctrl-f:page-down,ctrl-b:page-up"
-    export FZF_TMUX=1
+    export FZF_DEFAULT_OPTS="--multi --no-reverse --inline-info --bind ctrl-f:page-down,ctrl-b:page-up"
 
     bind "$(bind -s | grep '"'"'^"\\C-r"'"'"' | grep -v '"'"'\\C-m'"'"' | sed '"'"'s/^"\\C-r/\\C-f"/'"')\""'
     bind "$(bind -s | grep '"'"'^"\\C-r"'"'"' | grep -v '"'"'\\C-m'"'"' | sed '"'"'s/"$/\\C-m"/'"')\""'
