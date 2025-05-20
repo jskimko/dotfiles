@@ -22,7 +22,7 @@ function git_prompt() {
 
 # Environment variables
 export PATH="$HOME/.local/bin:$PATH"
-export LD_LIBRARY_PATH="$HOME/.local/lib:$PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
 export PS1="\[\e[31;1m\]\$(nonzero_return)\[\e[93;1m\][\h:\w\$(git_prompt)]\\$ \[\e[m\]"
 export HISTCONTROL=ignoreboth:erasedups
 export LS_COLORS=$LS_COLORS':di=0;35:'

@@ -82,7 +82,7 @@ nnoremap <C-w>f <C-w>f<C-w>L
 " toggle line numbers
 map <leader>n :set number!<CR>:set relativenumber!<CR>
 
-" toggle wrap
+" toggle line wrap
 map <leader>w :set wrap!<CR>
 
 """""""""""
