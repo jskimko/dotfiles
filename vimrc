@@ -5,6 +5,7 @@ let g:python_recommended_style = 0
 filetype plugin indent on
 syntax on
 colorscheme desert
+highlight Search ctermfg=Black ctermbg=Yellow
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -19,6 +20,11 @@ set clipboard=unnamedplus
 set cc=80
 set number
 set relativenumber
+"set nofsync
+"if !isdirectory("/tmp/" . $USER)
+"  call mkdir("/tmp/" . $USER, "p", 0700)
+"endif
+"set directory=/tmp/$USER//
 
 set laststatus=2
 highlight StatusLine cterm=None ctermbg=DarkGrey ctermfg=White
@@ -29,8 +35,9 @@ highlight CursorLineNr ctermfg=White
 
 " jump to last position
 if has("autocmd")
-	:au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
                 \| exe "normal! g`\"" | endif
+  "au BufRead,BufNewFile *.mod set syntax=ampl
 endif
 
 " split
@@ -74,6 +81,9 @@ nnoremap <C-w>f <C-w>f<C-w>L
 
 " toggle line numbers
 map <leader>n :set number!<CR>:set relativenumber!<CR>
+
+" toggle wrap
+map <leader>w :set wrap!<CR>
 
 """""""""""
 " Plugins "
