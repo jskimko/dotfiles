@@ -90,6 +90,11 @@ map <leader>w :set wrap!<CR>
 " Plugins "
 """""""""""
 
+" AutoComplPop
+let g:acp_ignorecaseOption = 0
+"let g:acp_behaviorPythonOmniLength = -1
+"let g:acp_enableAtStartup = 0
+
 " ale
 set omnifunc=ale#completion#OmniFunc
 set signcolumn=number
@@ -105,7 +110,7 @@ nnoremap <leader>gi :ALEGoToImplementation<CR>
 nnoremap <leader>gr :ALEFindReferences<CR>
 nnoremap <leader>gs :ALESymbolSearch<space>
 set completeopt=menu,menuone,noinsert,noselect
-let g:ale_completion_enabled = 1
+"let g:ale_completion_enabled = 1
 let g:ale_hover_cursor = 0
 
 "let g:ale_linters = {
@@ -147,11 +152,6 @@ endfunction
 
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>
-
-" AutoComplPop
-let g:acp_ignorecaseOption = 0
-"let g:acp_behaviorPythonOmniLength = -1
-let g:acp_enableAtStartup = 0
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>

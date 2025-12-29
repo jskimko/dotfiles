@@ -48,7 +48,7 @@ if [ "_$user" = _y ]; then
 
     # plugins
     cd bundle
-    #git clone https://github.com/vim-scripts/AutoComplPop
+    git clone https://github.com/vim-scripts/AutoComplPop
     git clone https://github.com/junegunn/fzf.vim
     git clone https://github.com/pbogut/fzf-mru.vim
     git clone https://github.com/justinmk/vim-sneak
