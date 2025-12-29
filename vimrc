@@ -95,32 +95,32 @@ let g:acp_ignorecaseOption = 0
 "let g:acp_behaviorPythonOmniLength = -1
 "let g:acp_enableAtStartup = 0
 
-" ale
-set omnifunc=ale#completion#OmniFunc
-set signcolumn=number
-nnoremap K :ALEHover<CR>
-nnoremap <leader>ai :ALEInfo<CR>
-nnoremap <leader>at :ALEToggle<CR>
-nnoremap <leader>ab :ALEToggleBuffer<CR>
-nnoremap <leader>gn :ALENext<CR>
-nnoremap <leader>gp :ALEPrevious<CR>
-nnoremap <leader>gd :ALEGoToDefinition<CR>
-nnoremap <leader>gt :ALEGoToTypeDefinition<CR>
-nnoremap <leader>gi :ALEGoToImplementation<CR>
-nnoremap <leader>gr :ALEFindReferences<CR>
-nnoremap <leader>gs :ALESymbolSearch<space>
-set completeopt=menu,menuone,noinsert,noselect
-"let g:ale_completion_enabled = 1
-let g:ale_hover_cursor = 0
-
-"let g:ale_linters = {
-"\ "python": ["pyright"],
-"\ "cpp": ["clangd"],
-"\}
-
-"let g:ale_fixers = {
-"\ '*': ['remove_trailing_lines', 'trim_whitespace'],
-"\}
+"" ale
+"set omnifunc=ale#completion#OmniFunc
+"set signcolumn=number
+"nnoremap K :ALEHover<CR>
+"nnoremap <leader>ai :ALEInfo<CR>
+"nnoremap <leader>at :ALEToggle<CR>
+"nnoremap <leader>ab :ALEToggleBuffer<CR>
+"nnoremap <leader>gn :ALENext<CR>
+"nnoremap <leader>gp :ALEPrevious<CR>
+"nnoremap <leader>gd :ALEGoToDefinition<CR>
+"nnoremap <leader>gt :ALEGoToTypeDefinition<CR>
+"nnoremap <leader>gi :ALEGoToImplementation<CR>
+"nnoremap <leader>gr :ALEFindReferences<CR>
+"nnoremap <leader>gs :ALESymbolSearch<space>
+"set completeopt=menu,menuone,noinsert,noselect
+""let g:ale_completion_enabled = 1
+"let g:ale_hover_cursor = 0
+"
+""let g:ale_linters = {
+""\ "python": ["pyright"],
+""\ "cpp": ["clangd"],
+""\}
+"
+""let g:ale_fixers = {
+""\ '*': ['remove_trailing_lines', 'trim_whitespace'],
+""\}
 
 " onedark + lightline
 let g:onedark_color_overrides = {
