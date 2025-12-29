@@ -12,7 +12,7 @@ set expandtab
 set hlsearch
 set incsearch
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=longest,list
 set undodir=$HOME/.vim/undo
 set undofile
 set showcmd
