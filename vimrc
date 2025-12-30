@@ -23,11 +23,11 @@ set relativenumber
 set foldmethod=marker
 
 " on slow fs
-set nofsync
-if !isdirectory("/tmp/" . $USER)
-  call mkdir("/tmp/" . $USER, "p", 0700)
-endif
-set directory=/tmp/$USER//
+"set nofsync
+"if !isdirectory("/tmp/" . $USER)
+"  call mkdir("/tmp/" . $USER, "p", 0700)
+"endif
+"set directory=/tmp/$USER//
 
 " white and grey line numbers
 highlight StatusLine cterm=None ctermbg=DarkGrey ctermfg=White
@@ -96,7 +96,9 @@ let g:acp_ignorecaseOption = 0
 "let g:acp_enableAtStartup = 0
 
 "" ale
-"set omnifunc=ale#completion#OmniFunc
+""set omnifunc=ale#completion#OmniFunc
+""set completeopt=menu,menuone,noinsert,noselect
+""let g:ale_completion_enabled = 1
 "set signcolumn=number
 "nnoremap K :ALEHover<CR>
 "nnoremap <leader>ai :ALEInfo<CR>
@@ -109,20 +111,18 @@ let g:acp_ignorecaseOption = 0
 "nnoremap <leader>gi :ALEGoToImplementation<CR>
 "nnoremap <leader>gr :ALEFindReferences<CR>
 "nnoremap <leader>gs :ALESymbolSearch<space>
-"set completeopt=menu,menuone,noinsert,noselect
-""let g:ale_completion_enabled = 1
 "let g:ale_hover_cursor = 0
 "
-""let g:ale_linters = {
-""\ "python": ["pyright"],
-""\ "cpp": ["clangd"],
-""\}
+"let g:ale_linters = {
+"\ "python": ["pyright"],
+"\ "cpp": ["clangd"],
+"\}
 "
 ""let g:ale_fixers = {
 ""\ '*': ['remove_trailing_lines', 'trim_whitespace'],
 ""\}
 
-" onedark + lightline
+" onedark
 let g:onedark_color_overrides = {
 \ "black":          { "gui": "#000000", "cterm": "0", "cterm16": "0" },
 \ "background":     { "gui": "#000000", "cterm": "0", "cterm16": "NONE" },
@@ -138,17 +138,12 @@ let g:onedark_color_overrides = {
 \}
 colorscheme onedark
 
-let g:lightline = {
-\ 'colorscheme': 'onedark',
-\ 'active': { 'left': [['mode', 'paste'], ['readonly', 'filename' ]], },
-\ 'component_function': { 'filename': 'LightlineFilename', },
-\}
-
-function! LightlineFilename()
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? ' +' : ''
-  return filename . modified
-endfunction
+highlight Title        ctermfg=none
+highlight TabLineSel   ctermfg=236 ctermbg=252
+highlight TabLine      ctermfg=252 ctermbg=240
+highlight TabLineFill  ctermfg=252 ctermbg=236
+highlight StatusLine   ctermfg=252 ctermbg=236
+highlight StatusLineNC ctermfg=244 ctermbg=234
 
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>
