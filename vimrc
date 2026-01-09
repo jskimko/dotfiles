@@ -143,7 +143,7 @@ highlight TabLineSel   ctermfg=236 ctermbg=252
 highlight TabLine      ctermfg=252 ctermbg=240
 highlight TabLineFill  ctermfg=252 ctermbg=236
 highlight StatusLine   ctermfg=252 ctermbg=236
-highlight StatusLineNC ctermfg=244 ctermbg=234
+highlight StatusLineNC ctermfg=244 ctermbg=235
 
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>
