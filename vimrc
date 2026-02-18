@@ -20,14 +20,12 @@ set clipboard=unnamedplus
 set cc=80
 set number
 set relativenumber
+set nofsync
+if !isdirectory("/tmp/" . $USER)
+  call mkdir("/tmp/" . $USER, "p", 0700)
+endif
+set directory=/tmp/$USER//
 set foldmethod=marker
-
-" on slow fs
-"set nofsync
-"if !isdirectory("/tmp/" . $USER)
-"  call mkdir("/tmp/" . $USER, "p", 0700)
-"endif
-"set directory=/tmp/$USER//
 
 " white and grey line numbers
 highlight StatusLine cterm=None ctermbg=DarkGrey ctermfg=White
@@ -40,6 +38,7 @@ if has("autocmd")
                 \| exe "normal! g`\"" | endif
   au BufRead,BufNewFile *.mod set syntax=ampl
 endif
+
 
 " split
 nnoremap <C-J> <C-W><C-J>
@@ -93,12 +92,12 @@ map <leader>w :set wrap!<CR>
 " AutoComplPop
 let g:acp_ignorecaseOption = 0
 "let g:acp_behaviorPythonOmniLength = -1
-"let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup = 1
 
 "" ale
 ""set omnifunc=ale#completion#OmniFunc
 ""set completeopt=menu,menuone,noinsert,noselect
-""let g:ale_completion_enabled = 1
+""let g:ale_completion_enabled = 0
 "set signcolumn=number
 "nnoremap K :ALEHover<CR>
 "nnoremap <leader>ai :ALEInfo<CR>
@@ -122,7 +121,7 @@ let g:acp_ignorecaseOption = 0
 ""\ '*': ['remove_trailing_lines', 'trim_whitespace'],
 ""\}
 
-" onedark
+" onedark + lightline
 let g:onedark_color_overrides = {
 \ "black":          { "gui": "#000000", "cterm": "0", "cterm16": "0" },
 \ "background":     { "gui": "#000000", "cterm": "0", "cterm16": "NONE" },
@@ -144,6 +143,18 @@ highlight TabLine      ctermfg=252 ctermbg=240
 highlight TabLineFill  ctermfg=252 ctermbg=236
 highlight StatusLine   ctermfg=252 ctermbg=236
 highlight StatusLineNC ctermfg=244 ctermbg=235
+
+let g:lightline = {
+\ 'colorscheme': 'onedark',
+\ 'active': { 'left': [['mode', 'paste'], ['readonly', 'filename' ]], },
+\ 'component_function': { 'filename': 'LightlineFilename', },
+\}
+
+function! LightlineFilename()
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return filename . modified
+endfunction
 
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>
