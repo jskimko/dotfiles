@@ -121,7 +121,7 @@ let g:acp_enableAtStartup = 1
 ""\ '*': ['remove_trailing_lines', 'trim_whitespace'],
 ""\}
 
-" onedark + lightline
+" onedark
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -130,34 +130,22 @@ let g:onedark_color_overrides = {
 \ "background":     { "gui": "#000000", "cterm": "0", "cterm16": "NONE" },
 \ "white":          { "gui": "#D0D0D0", "cterm": "252", "cterm16": "15" },
 \ "foreground":     { "gui": "#D0D0D0", "cterm": "252", "cterm16": "NONE" },
-\ "comment_grey":   { "gui": "#6C6C6C", "cterm": "244", "cterm16": "7" },
-\ "vertsplit":      { "gui": "#6C6C6C", "cterm": "244", "cterm16": "7" },
-\ "special_grey":   { "gui": "#6C6C6C", "cterm": "244", "cterm16": "7" },
-\ "gutter_fg_grey": { "gui": "#444444", "cterm": "240", "cterm16": "8" },
-\ "visual_grey":    { "gui": "#444444", "cterm": "240", "cterm16": "8" },
+\ "comment_grey":   { "gui": "#6C6C6C", "cterm": "242", "cterm16": "7" },
+\ "vertsplit":      { "gui": "#6C6C6C", "cterm": "242", "cterm16": "7" },
+\ "special_grey":   { "gui": "#6C6C6C", "cterm": "242", "cterm16": "7" },
+\ "gutter_fg_grey": { "gui": "#444444", "cterm": "238", "cterm16": "8" },
+\ "visual_grey":    { "gui": "#444444", "cterm": "238", "cterm16": "8" },
 \ "menu_grey":      { "gui": "#303030", "cterm": "236", "cterm16": "8" },
 \ "cursor_grey":    { "gui": "#303030", "cterm": "236", "cterm16": "8" },
 \}
 colorscheme onedark
 
 highlight Title        ctermfg=none
-highlight TabLineSel   ctermfg=236 ctermbg=252
-highlight TabLine      ctermfg=252 ctermbg=240
-highlight TabLineFill  ctermfg=252 ctermbg=236
-highlight StatusLine   ctermfg=252 ctermbg=236
-highlight StatusLineNC ctermfg=244 ctermbg=235
-
-let g:lightline = {
-\ 'colorscheme': 'onedark',
-\ 'active': { 'left': [['mode', 'paste'], ['readonly', 'filename' ]], },
-\ 'component_function': { 'filename': 'LightlineFilename', },
-\}
-
-function! LightlineFilename()
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? ' +' : ''
-  return filename . modified
-endfunction
+highlight TabLine      guifg=#D0D0D0 guibg=#444444 ctermfg=252 ctermbg=238
+highlight TabLineSel   guifg=#303030 guibg=#D0D0D0 ctermfg=236 ctermbg=252
+highlight TabLineFill  guifg=#D0D0D0 guibg=#303030 ctermfg=252 ctermbg=236
+highlight StatusLine   guifg=#D0D0D0 guibg=#303030 ctermfg=252 ctermbg=236
+highlight StatusLineNC guifg=#6C6C6C guibg=#121212 ctermfg=242 ctermbg=233
 
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>
