@@ -122,6 +122,9 @@ let g:acp_enableAtStartup = 1
 ""\}
 
 " onedark + lightline
+if (has("termguicolors"))
+  set termguicolors
+endif
 let g:onedark_color_overrides = {
 \ "black":          { "gui": "#000000", "cterm": "0", "cterm16": "0" },
 \ "background":     { "gui": "#000000", "cterm": "0", "cterm16": "NONE" },
