@@ -24,7 +24,7 @@ if [ "_$user" = _y ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
     $HOME/.fzf/install --all
 
-    echo 'if command -v fzf; then
+    echo 'if command -v fzf >/dev/null; then
     export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore --exclude .git --exclude *.swp"
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     export FZF_ALT_C_COMMAND="fd --type d"
