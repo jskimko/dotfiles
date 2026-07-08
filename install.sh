@@ -55,6 +55,7 @@ if [ "_$user" = _y ]; then
     git clone https://github.com/joshdick/onedark.vim
     git clone https://github.com/mbbill/undotree
     git clone https://github.com/preservim/tagbar
+    git clone https://github.com/preservim/indentLine
 
     cd $start
 fi

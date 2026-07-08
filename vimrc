@@ -174,3 +174,6 @@ let g:fzf_layout = { 'down': '~30%' }
 
 " fzf-mru.vim
 nnoremap <leader>m :FZFMru<CR>
+
+" indentLine
+let g:indentLine_char = '▏'
