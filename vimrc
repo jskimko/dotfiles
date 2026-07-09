@@ -177,3 +177,5 @@ nnoremap <leader>m :FZFMru<CR>
 
 " indentLine
 let g:indentLine_char = '▏'
+nnoremap <leader>i :IndentLinesToggle<CR>
+
