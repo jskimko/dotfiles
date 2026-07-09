@@ -43,7 +43,7 @@ alias ga="git add"
 alias gc="git commit"
 alias gl="git log --oneline -20"
 alias gb="git branch"
-alias ssh-init='eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_ed25519'
+#alias ssh-init='eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_ed25519'
 #alias pdflatex='pdflatex -halt-on-error'
 #alias expac='expac --timefmt="%Y-%m-%d %T" "%l\t%n" | sort'
 #alias mavail="module avail"
@@ -54,3 +54,19 @@ alias ssh-init='eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_ed25519'
 
 # umask
 umask 0077
+
+# ssh-agent
+if command -v ssh-agent >/dev/null; then
+  SSH_ENV="$HOME/.ssh/agent.env"
+  if [ ! -f "$SSH_ENV" ]; then
+    ssh-agent -s > "$SSH_ENV"
+  fi
+
+  . "$SSH_ENV" >/dev/null
+
+  if ! ps -p "$SSH_AGENT_PID" -o comm= | grep -q ssh-agent; then
+    ssh-agent -s > "$SSH_ENV"
+    . "$SSH_ENV" >/dev/null
+  fi
+fi
+
