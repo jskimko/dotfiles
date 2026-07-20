@@ -16,6 +16,7 @@ if [ "_$user" = _y ]; then
     cat vimrc >> $HOME/.vimrc
     cat bashrc >> $HOME/.bashrc
     cat tmux.conf >> $HOME/.tmux.conf
+    mkdir -p $HOME/.ssh && cat ssh-config >> $HOME/.ssh/config
 fi
 
 echo -ne '\e[96;1m> Install fzf? (y/[n]) \e[39;0m'

@@ -56,17 +56,21 @@ alias gb="git branch"
 umask 0077
 
 # ssh-agent
-if command -v ssh-agent >/dev/null; then
-  SSH_ENV="$HOME/.ssh/agent.env"
-  if [ ! -f "$SSH_ENV" ]; then
-    ssh-agent -s > "$SSH_ENV"
-  fi
+if command -v ssh-agent >/dev/null 2>&1; then
+  _host=$(uname -n | cut -d. -f1)
+  SSH_ENV="$HOME/.ssh/agent-$_host.env"
 
-  . "$SSH_ENV" >/dev/null
+  _agent_live() {
+  ▏ [ -S "$SSH_AUTH_SOCK" ] || return 1
+  ▏ ssh-add -l >/dev/null 2>&1 || [ $? -eq 1 ]
+  }
 
-  if ! ps -p "$SSH_AGENT_PID" -o comm= | grep -q ssh-agent; then
-    ssh-agent -s > "$SSH_ENV"
-    . "$SSH_ENV" >/dev/null
+  [ -f "$SSH_ENV" ] && . "$SSH_ENV" >/dev/null 2>&1
+
+  if ! _agent_live; then
+  ▏ ssh-agent -s > "$SSH_ENV" 2>/dev/null
+  ▏ . "$SSH_ENV" >/dev/null 2>&1
   fi
+  unset _host
 fi
 
