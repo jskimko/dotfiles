@@ -61,15 +61,15 @@ if command -v ssh-agent >/dev/null 2>&1; then
   SSH_ENV="$HOME/.ssh/agent-$_host.env"
 
   _agent_live() {
-  ▏ [ -S "$SSH_AUTH_SOCK" ] || return 1
-  ▏ ssh-add -l >/dev/null 2>&1 || [ $? -eq 1 ]
+    [ -S "$SSH_AUTH_SOCK" ] || return 1
+    ssh-add -l >/dev/null 2>&1 || [ $? -eq 1 ]
   }
 
   [ -f "$SSH_ENV" ] && . "$SSH_ENV" >/dev/null 2>&1
 
   if ! _agent_live; then
-  ▏ ssh-agent -s > "$SSH_ENV" 2>/dev/null
-  ▏ . "$SSH_ENV" >/dev/null 2>&1
+    ssh-agent -s > "$SSH_ENV" 2>/dev/null
+    . "$SSH_ENV" >/dev/null 2>&1
   fi
   unset _host
 fi
