@@ -57,6 +57,7 @@ if [ "_$user" = _y ]; then
     git clone https://github.com/mbbill/undotree
     git clone https://github.com/preservim/tagbar
     git clone https://github.com/Yggdroot/indentLine.git
+    #git clone --depth 1 --branch v2.18 https://github.com/lervag/vimtex
 
     cd $start
 fi

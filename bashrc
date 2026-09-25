@@ -52,6 +52,12 @@ alias gb="git branch"
 #alias sme="squeue -u kimko1"
 #alias bme="bjobs -u kimko1"
 
+lmk() {
+  latexmk -pdf -pvc -view=none -outdir=build -synctex=1 \
+          -interaction=nonstopmode -file-line-error \
+          "${@:-main.tex}"
+}
+
 # umask
 umask 0077
 

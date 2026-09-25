@@ -179,3 +179,9 @@ nnoremap <leader>m :FZFMru<CR>
 let g:indentLine_char = '▏'
 nnoremap <leader>i :IndentLinesToggle<CR>
 
+" vimtex compile=\ll kill=\lk clear=\lc
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_latexmk = {'out_dir': 'build'}
+if empty(v:servername) && exists('*remote_startserver') && !empty($DISPLAY)
+  call remote_startserver('VIM')
+endif
